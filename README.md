@@ -12,3 +12,9 @@ You can read:
 Since we do not using official API, so there is some traffic reduction and increased speed.
 Coming soon a new interesting features!
 Enjoy Designer News when you're away from your laptop!
+
+## Design
+Artem Nosenko - http://be.net/artnosenko https://dribbble.com/artem_nosenko
+
+## Development
+Dmytro Belyaew [@sharpfuryz](https://github.com/sharpfuryz) - http://sovremenius.com
