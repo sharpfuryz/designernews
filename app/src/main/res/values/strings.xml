@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Designer News</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="bullet"><![CDATA[&#8226;]]></string>
+    <string name="drawer_item_discussions">Discussions</string>
+    <string name="drawer_item_recent_stories">Recent stories</string>
+    <string name="drawer_item_top_stories">Top stories</string>
+    <string name="action_search">Search</string>
+    <string name="network_error">Network error, pull to refresh</string>
+    <string name="share_app">Share this app</string>
+    <string name="title_activity_show">Comments</string>
+    <string name="Lets_discuss">Let\'s discuss.</string>
+    <string name="drawer_item_jobs">Jobs</string>
+    <string name="title_activity_browser">Browser</string>
+
+</resources>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="design_bg">#F9FAFA</color>
+    <color name="actionbar_bg">#2D72D9</color>
+    <color name="drawer_header_bg">#2E68DC</color>
+    <color name="primary_color">#212121</color>
+    <color name="secondary_color">#727272</color>
+    <!--Drawer-->
+    <color name="material_drawer_selected_text">#000</color>
+    <color name="second_lane_text_color">#A0BAE1</color>
+    <color name="lets_discuss_text_color">#fff</color>
+    <color name="comment_primary">#727272</color>
+    <color name="comment_body">#212121</color>
+    <color name="panel_bg">#245BAD</color>
+    <color name="separator_color">#E1E5E9</color>
+</resources>
