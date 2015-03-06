@@ -1,6 +1,6 @@
 package eu.restio.designernews;
 
-import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBarActivity;
@@ -33,11 +33,12 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private void initDrawer(Toolbar toolbar) {
-        new Drawer()
+        Drawer mDrawer = new Drawer()
                 .withActivity(this)
                 .withToolbar(toolbar)
                 .withActionBarDrawerToggle(true)
                 .withHeader(R.layout.drawer_header)
+                .withHeaderDivider(false)
                 .addDrawerItems(
                         new PrimaryDrawerItem().withName(R.string.drawer_item_top_stories).withIcon(getResources().getDrawable(R.drawable.ic_drawer_top_stories)).withIdentifier(1),
                         new PrimaryDrawerItem().withName(R.string.drawer_item_recent_stories).withIcon(getResources().getDrawable(R.drawable.ic_drawer_recent_stories)).withIdentifier(2),
@@ -49,8 +50,11 @@ public class MainActivity extends ActionBarActivity {
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id, IDrawerItem drawerItem) {
                         setFrame(position);
                     }
-                })
-                .build();
+                });
+        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
+            mDrawer.withDrawerWidthDp(260);
+        }
+        mDrawer.build();
     }
 
     @Override
@@ -112,13 +116,6 @@ public class MainActivity extends ActionBarActivity {
                 lane = "Designer News";
         }
         getSupportActionBar().setTitle(lane);
-    }
-
-    private void open_share_intent() {
-        Intent share = new Intent(Intent.ACTION_SEND);
-        share.setType("text/plain");
-        share.putExtra(Intent.EXTRA_TEXT, "https://play.google.com/store/apps/details?id=eu.restio.designernews");
-        startActivity(Intent.createChooser(share, "Share our app"));
     }
 
     private void display_search_window() {
