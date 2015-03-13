@@ -83,7 +83,6 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/lets_discuss_text_color"
-                    android:text="@string/Lets_discuss"
                     android:autoLink="web"
                     android:textColorLink="@color/lets_discuss_text_color"
                     android:id="@+id/commentBody"

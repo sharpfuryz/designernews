@@ -1,10 +1,8 @@
 package eu.restio.designernews;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -30,7 +28,7 @@ public class BrowserActivity extends ActionBarActivity {
             webView = (WebView) findViewById(R.id.webView);
 
             WebSettings webSettings = webView.getSettings();
-            webSettings.setBuiltInZoomControls(false);
+            webSettings.setBuiltInZoomControls(true);
             webSettings.setJavaScriptEnabled(true);
 
             webView.setWebViewClient(new wvCallback());
