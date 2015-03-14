@@ -20,12 +20,12 @@ import eu.restio.designernews.models.Job;
 import eu.restio.designernews.network.API;
 
 public class JobsFragment extends android.support.v4.app.ListFragment {
+
     public ArrayList<Job> jobs_list;
     private JobsListViewAdapter adapter;
 
     public static JobsFragment newInstance() {
-        JobsFragment fragment = new JobsFragment();
-        return fragment;
+        return new JobsFragment();
     }
     public JobsFragment() {
     }
@@ -44,15 +44,8 @@ public class JobsFragment extends android.support.v4.app.ListFragment {
         new JobsFetcher().execute();
         return rootView;
     }
+
     class JobsFetcher extends AsyncTask<Void, Void, String> {
-
-        public int items_group;
-        public boolean force;
-
-        public JobsFetcher(){
-            super();
-        }
-
 
         @Override
         protected String doInBackground(Void... params) {
@@ -62,11 +55,12 @@ public class JobsFragment extends android.support.v4.app.ListFragment {
 
         @Override
         protected void onPostExecute(String result) {
-            if (result == null) {
-                MainActivity a = (MainActivity) getActivity();
-                a.raise_io_error();
-            }
             try {
+                if (result == null) {
+                    MainActivity a = (MainActivity) getActivity();
+                    a.raiseNetworkError();
+                }
+
                 Gson gson = new Gson();
                 Type listType = new TypeToken<ArrayList<Job>>() {}.getType();
 

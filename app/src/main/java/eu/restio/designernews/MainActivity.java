@@ -1,6 +1,9 @@
 package eu.restio.designernews;
 
+import android.content.Context;
 import android.content.res.Configuration;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBarActivity;
@@ -30,6 +33,13 @@ public class MainActivity extends ActionBarActivity {
         setSupportActionBar(toolbar);
         initDrawer(toolbar);
         setFrame(1);
+        checkNetworkState();
+    }
+
+    private void checkNetworkState() {
+        if(!isConnected()){
+            raiseNetworkError();
+        }
     }
 
     private void initDrawer(Toolbar toolbar) {
@@ -121,7 +131,14 @@ public class MainActivity extends ActionBarActivity {
     private void display_search_window() {
         //
     }
-    public void raise_io_error(){
+
+    public boolean isConnected() {
+        ConnectivityManager connManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo info = connManager.getActiveNetworkInfo();
+        return info != null && info.isConnectedOrConnecting();
+    }
+
+    public void raiseNetworkError(){
         new SnackBar.Builder(this)
                 .withMessageId(R.string.network_error)
                 .withStyle(SnackBar.Style.ALERT)

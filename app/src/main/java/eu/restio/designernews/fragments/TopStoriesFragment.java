@@ -26,8 +26,7 @@ public class TopStoriesFragment extends android.support.v4.app.ListFragment {
     private StoriesListViewAdapter adapter;
 
     public static TopStoriesFragment newInstance() {
-        TopStoriesFragment fragment = new TopStoriesFragment();
-        return fragment;
+        return new TopStoriesFragment();
     }
 
     public TopStoriesFragment() {
@@ -44,11 +43,11 @@ public class TopStoriesFragment extends android.support.v4.app.ListFragment {
         setListAdapter(adapter);
 
         new TopStoriesFetcher(position).execute();
-        init_swipe_to_refresh(rootView, position);
+        setSwipeToRefreshView(rootView, position);
         return rootView;
     }
 
-    private void init_swipe_to_refresh(View root, final int position) {
+    private void setSwipeToRefreshView(View root, final int position) {
         try {
             swipeLayout = (SwipeRefreshLayout) root.findViewById(R.id.swipe_container);
             swipeLayout.setOnRefreshListener(
@@ -109,11 +108,12 @@ public class TopStoriesFragment extends android.support.v4.app.ListFragment {
 
         @Override
         protected void onPostExecute(String result) {
-            if (result == null) {
-                MainActivity a = (MainActivity) getActivity();
-                a.raise_io_error();
-            }
             try {
+                if (result == null) {
+                    MainActivity a = (MainActivity) getActivity();
+                    a.raiseNetworkError();
+                }
+
                 swipeLayout.setRefreshing(false);
 
                 Gson gson = new Gson();
