@@ -30,10 +30,7 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        initDrawer(toolbar);
+        initDrawer();
         setFrame(1);
         checkNetworkState();
         setStatusBar();
@@ -52,13 +49,16 @@ public class MainActivity extends ActionBarActivity {
         }
     }
 
-    private void initDrawer(Toolbar toolbar) {
+    private void initDrawer() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         Drawer mDrawer = new Drawer()
                 .withActivity(this)
                 .withToolbar(toolbar)
                 .withActionBarDrawerToggle(true)
                 .withHeader(R.layout.drawer_header)
                 .withHeaderDivider(false)
+                .withTranslucentStatusBar(false)
                 .addDrawerItems(
                         new PrimaryDrawerItem().withName(R.string.drawer_item_top_stories).withIcon(getResources().getDrawable(R.drawable.ic_drawer_top_stories)).withIdentifier(1),
                         new PrimaryDrawerItem().withName(R.string.drawer_item_recent_stories).withIcon(getResources().getDrawable(R.drawable.ic_drawer_recent_stories)).withIdentifier(2),
